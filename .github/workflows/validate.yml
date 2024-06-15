@@ -22,4 +22,4 @@ jobs:
 
     - name: Validate CloudFormation template
       run: |
-        aws cloudformation validate-template --template-body file://template.yaml
+        aws cloudformation validate-template --template-body file://$(pwd)/template.yaml
