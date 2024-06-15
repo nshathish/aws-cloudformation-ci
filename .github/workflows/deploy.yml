@@ -60,6 +60,6 @@ jobs:
         template: template.yml
         no-fail-on-empty-changeset: "1"
         parameter-overrides: >-
-          MyKeyName=${{ github.event.inputs.keypair }}
-          MyAvailabilityZone=${{ github.event.inputs.zone }}
+          MyKeyName=${{ github.event.inputs.keypair }},
+          MyAvailabilityZone=${{ github.event.inputs.zone }},
           MyInstanceType=${{ github.event.inputs.instance }}
