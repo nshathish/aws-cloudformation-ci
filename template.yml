@@ -1,8 +1,22 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: CloudFormation template to create an S3 bucket
+Description: Learn Cloudformation Labs
 
 Resources:
-  MyS3Bucket:
-    Type: 'AWS::S3::Bucket'
+  DevEC2Instance:
+    Type: AWS::EC2::Instance
     Properties:
-      BucketName: my-sample-bucket-unique-name-2
+      ImageId: ami-0b53285ea6c7a08a7
+      InstanceType: t2.micro
+      KeyName: cfn-key-win-openssh-1
+      SecurityGroups:
+        - default
+        - !Ref SSHSecurityGroup
+  SSHSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable SSH access via port 22
+      SecurityGroupIngress:
+        - CidrIp: 0.0.0.0/0
+          FromPort: '22'
+          ToPort: '22'
+          IpProtocol: tcp
