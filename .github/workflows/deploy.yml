@@ -1,9 +1,30 @@
 name: Deploy CloudFormation Stack
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      keypair:
+        description: 'Name of an existing EC2 KeyPair to enable SSH access to the instance'
+        required: true
+      zone:
+        description: 'Availabilityzone to create this instance'
+        required: true
+        default: 'eu-west-2a'
+        type: choice
+        options:
+          - 'eu-west-2a'
+          - 'eu-west-2b'
+          - 'eu-west-2c'
+      instance:
+        description: 'Instance type'
+        required: true
+        default: 't2.micro'
+        type: choice
+        options:
+          - 't2.micro'
+          - 't2.small'
+          - 't2.medium'
+        
     
 jobs:
   deploy:
@@ -38,3 +59,7 @@ jobs:
         name: ${{ steps.env-name.outputs.environment }}-cluster
         template: template.yml
         no-fail-on-empty-changeset: "1"
+        parameter-overrides: >-
+          MyKeyName=${{ github.event.inputs.keypair }}
+          MyAvailabilityZone=${{ github.event.inputs.zone }}
+          MyInstanceType=${{ github.event.inputs.instance }}
