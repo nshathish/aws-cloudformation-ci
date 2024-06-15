@@ -5,4 +5,4 @@ Resources:
   MyS3Bucket:
     Type: 'AWS::S3::Bucket'
     Properties:
-      BucketName: my-sample-bucket-unique-name-12345
+      BucketName: my-sample-bucket-unique-name
