@@ -25,4 +25,9 @@ jobs:
         aws cloudformation deploy \
           --template-file template.yml \
           --stack-name my-cloudformation-stack \
-          --capabilities CAPABILITY_NAMED_IAM
+          --capabilities CAPABILITY_NAMED_IAM \
+          --region us-west-2
+
+    - name: Describe CloudFormation stack
+      run: |
+        aws cloudformation describe-stacks --stack-name my-cloudformation-stack --region us-west-2
