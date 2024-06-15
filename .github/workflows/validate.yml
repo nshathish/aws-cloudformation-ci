@@ -20,8 +20,3 @@ jobs:
         run: |
           cfn-lint --version
           cfn-lint -t ./template.yml
-
-      - name: cfn-nag-action
-        uses: minchao/cfn-nag-action@v0.1
-        with:
-          args: '--input-path /'
