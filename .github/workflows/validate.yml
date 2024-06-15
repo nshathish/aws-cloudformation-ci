@@ -16,4 +16,4 @@ jobs:
     - name: Validate CloudFormation template
       run: |
         ls -al # List files to ensure template.yaml is present
-        aws cloudformation validate-template --template-body file://template.yaml
+        aws cloudformation validate-template --template-body template.yaml
