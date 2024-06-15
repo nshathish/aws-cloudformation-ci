@@ -7,9 +7,6 @@ on:
         description: 'AWS Region'
         required: true
         default: 'us-west-2'
-  push:
-    branches:
-      - main
 
 jobs:
   deploy:
